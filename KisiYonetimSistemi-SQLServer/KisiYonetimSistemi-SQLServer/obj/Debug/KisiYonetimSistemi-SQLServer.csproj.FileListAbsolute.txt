@@ -1,0 +1,10 @@
+C:\Users\STAJYER\CengizHolding-StajProjeleri\KisiYonetimSistemi-SQLServer\KisiYonetimSistemi-SQLServer\bin\Debug\KisiYonetimSistemi-SQLServer.exe.config
+C:\Users\STAJYER\CengizHolding-StajProjeleri\KisiYonetimSistemi-SQLServer\KisiYonetimSistemi-SQLServer\bin\Debug\KisiYonetimSistemi-SQLServer.exe
+C:\Users\STAJYER\CengizHolding-StajProjeleri\KisiYonetimSistemi-SQLServer\KisiYonetimSistemi-SQLServer\bin\Debug\KisiYonetimSistemi-SQLServer.pdb
+C:\Users\STAJYER\CengizHolding-StajProjeleri\KisiYonetimSistemi-SQLServer\KisiYonetimSistemi-SQLServer\obj\Debug\KisiYonetimSistemi-SQLServer.csproj.AssemblyReference.cache
+C:\Users\STAJYER\CengizHolding-StajProjeleri\KisiYonetimSistemi-SQLServer\KisiYonetimSistemi-SQLServer\obj\Debug\KisiYonetimSistemi_SQLServer.Form1.resources
+C:\Users\STAJYER\CengizHolding-StajProjeleri\KisiYonetimSistemi-SQLServer\KisiYonetimSistemi-SQLServer\obj\Debug\KisiYonetimSistemi_SQLServer.Properties.Resources.resources
+C:\Users\STAJYER\CengizHolding-StajProjeleri\KisiYonetimSistemi-SQLServer\KisiYonetimSistemi-SQLServer\obj\Debug\KisiYonetimSistemi-SQLServer.csproj.GenerateResource.cache
+C:\Users\STAJYER\CengizHolding-StajProjeleri\KisiYonetimSistemi-SQLServer\KisiYonetimSistemi-SQLServer\obj\Debug\KisiYonetimSistemi-SQLServer.csproj.CoreCompileInputs.cache
+C:\Users\STAJYER\CengizHolding-StajProjeleri\KisiYonetimSistemi-SQLServer\KisiYonetimSistemi-SQLServer\obj\Debug\KisiYonetimSistemi-SQLServer.exe
+C:\Users\STAJYER\CengizHolding-StajProjeleri\KisiYonetimSistemi-SQLServer\KisiYonetimSistemi-SQLServer\obj\Debug\KisiYonetimSistemi-SQLServer.pdb
