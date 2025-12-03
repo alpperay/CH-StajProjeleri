@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace KisiYonetimSistemi
 {
@@ -142,9 +141,6 @@ namespace KisiYonetimSistemi
             }
         }
 
-
-
-
         public class Kisi
         {
             public int Id { get; set; }
@@ -154,39 +150,5 @@ namespace KisiYonetimSistemi
             public string Telefon { get; set; }
         }
 
-        private void btnYukleXml_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "XML dosyası (*.xml)|*.xml";
-            openFileDialog.Title = "XML dosyasını seç";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    System.Xml.Serialization.XmlSerializer serializer =
-                        new System.Xml.Serialization.XmlSerializer(typeof(List<Kisi>));
-
-                    using (var stream = new System.IO.FileStream(openFileDialog.FileName, System.IO.FileMode.Open))
-                    {
-                        kisiler = (List<Kisi>)serializer.Deserialize(stream);
-                    }
-
-                    // En büyük ID'den devam etsin
-                    if (kisiler.Count > 0)
-                        sayac = kisiler.Max(x => x.Id) + 1;
-                    else
-                        sayac = 1;
-
-                    ListeyiGuncelle();
-
-                    MessageBox.Show("XML başarıyla yüklendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-     }
+    }
 }

@@ -30,7 +30,6 @@
             this.btnGuncelle = new System.Windows.Forms.Button();
             this.dgvKisiler = new System.Windows.Forms.DataGridView();
             this.btnKaydetXml = new System.Windows.Forms.Button();
-            this.btnYukleXml = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKisiler)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,9 +99,9 @@
             // 
             // btnEkle
             // 
-            this.btnEkle.Location = new System.Drawing.Point(250, 58);
+            this.btnEkle.Location = new System.Drawing.Point(250, 47);
             this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(200, 37);
+            this.btnEkle.Size = new System.Drawing.Size(200, 26);
             this.btnEkle.TabIndex = 4;
             this.btnEkle.Text = "Ekle";
             this.btnEkle.UseVisualStyleBackColor = true;
@@ -110,9 +109,9 @@
             // 
             // btnSil
             // 
-            this.btnSil.Location = new System.Drawing.Point(250, 118);
+            this.btnSil.Location = new System.Drawing.Point(250, 98);
             this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(200, 37);
+            this.btnSil.Size = new System.Drawing.Size(200, 26);
             this.btnSil.TabIndex = 5;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = true;
@@ -120,9 +119,9 @@
             // 
             // btnGuncelle
             // 
-            this.btnGuncelle.Location = new System.Drawing.Point(250, 178);
+            this.btnGuncelle.Location = new System.Drawing.Point(250, 149);
             this.btnGuncelle.Name = "btnGuncelle";
-            this.btnGuncelle.Size = new System.Drawing.Size(200, 37);
+            this.btnGuncelle.Size = new System.Drawing.Size(200, 26);
             this.btnGuncelle.TabIndex = 6;
             this.btnGuncelle.Text = "Güncelle";
             this.btnGuncelle.UseVisualStyleBackColor = true;
@@ -135,35 +134,24 @@
             this.dgvKisiler.Name = "dgvKisiler";
             this.dgvKisiler.RowHeadersWidth = 51;
             this.dgvKisiler.RowTemplate.Height = 24;
-            this.dgvKisiler.Size = new System.Drawing.Size(717, 250);
+            this.dgvKisiler.Size = new System.Drawing.Size(598, 250);
             this.dgvKisiler.TabIndex = 7;
             this.dgvKisiler.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKisiler_CellClick);
             // 
             // btnKaydetXml
             // 
-            this.btnKaydetXml.Location = new System.Drawing.Point(487, 58);
+            this.btnKaydetXml.Location = new System.Drawing.Point(250, 200);
             this.btnKaydetXml.Name = "btnKaydetXml";
-            this.btnKaydetXml.Size = new System.Drawing.Size(200, 37);
+            this.btnKaydetXml.Size = new System.Drawing.Size(200, 26);
             this.btnKaydetXml.TabIndex = 104;
             this.btnKaydetXml.Text = "XML Kaydet";
             this.btnKaydetXml.UseVisualStyleBackColor = true;
             this.btnKaydetXml.Click += new System.EventHandler(this.btnKaydetXml_Click);
             // 
-            // btnYukleXml
-            // 
-            this.btnYukleXml.Location = new System.Drawing.Point(487, 118);
-            this.btnYukleXml.Name = "btnYukleXml";
-            this.btnYukleXml.Size = new System.Drawing.Size(200, 37);
-            this.btnYukleXml.TabIndex = 105;
-            this.btnYukleXml.Text = "XML Yükle";
-            this.btnYukleXml.UseVisualStyleBackColor = true;
-            this.btnYukleXml.Click += new System.EventHandler(this.btnYukleXml_Click);
-            // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.ClientSize = new System.Drawing.Size(793, 520);
-            this.Controls.Add(this.btnYukleXml);
             this.Controls.Add(this.btnKaydetXml);
             this.Controls.Add(this.lblAd);
             this.Controls.Add(this.lblSoyad);
@@ -206,6 +194,5 @@
 
         private System.Windows.Forms.DataGridView dgvKisiler;
         private System.Windows.Forms.Button btnKaydetXml;
-        private System.Windows.Forms.Button btnYukleXml;
     }
 }
