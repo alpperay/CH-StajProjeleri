@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Visual Studio
 .vs/
 *.suo
@@ -14,3 +15,8 @@ obj/
 
 # VS Code
 .vscode/
+=======
+bin/ 
+obj/ 
+.vs/ 
+>>>>>>> 505946d86270cabeb4ebc5938a30faa73ca0dd1f
