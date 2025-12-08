@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build output
+bin/
+obj/
+
+# Rider
+.idea/
+
+# VS Code
+.vscode/
+=======
 bin/ 
 obj/ 
 .vs/ 
+>>>>>>> 505946d86270cabeb4ebc5938a30faa73ca0dd1f
