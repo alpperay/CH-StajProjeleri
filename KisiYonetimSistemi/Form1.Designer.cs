@@ -100,7 +100,7 @@
             // 
             // btnEkle
             // 
-            this.btnEkle.Location = new System.Drawing.Point(250, 58);
+            this.btnEkle.Location = new System.Drawing.Point(250, 41);
             this.btnEkle.Name = "btnEkle";
             this.btnEkle.Size = new System.Drawing.Size(200, 37);
             this.btnEkle.TabIndex = 4;
@@ -110,7 +110,7 @@
             // 
             // btnSil
             // 
-            this.btnSil.Location = new System.Drawing.Point(250, 118);
+            this.btnSil.Location = new System.Drawing.Point(250, 84);
             this.btnSil.Name = "btnSil";
             this.btnSil.Size = new System.Drawing.Size(200, 37);
             this.btnSil.TabIndex = 5;
@@ -120,7 +120,7 @@
             // 
             // btnGuncelle
             // 
-            this.btnGuncelle.Location = new System.Drawing.Point(250, 178);
+            this.btnGuncelle.Location = new System.Drawing.Point(250, 127);
             this.btnGuncelle.Name = "btnGuncelle";
             this.btnGuncelle.Size = new System.Drawing.Size(200, 37);
             this.btnGuncelle.TabIndex = 6;
@@ -141,7 +141,7 @@
             // 
             // btnKaydetXml
             // 
-            this.btnKaydetXml.Location = new System.Drawing.Point(487, 58);
+            this.btnKaydetXml.Location = new System.Drawing.Point(456, 41);
             this.btnKaydetXml.Name = "btnKaydetXml";
             this.btnKaydetXml.Size = new System.Drawing.Size(200, 37);
             this.btnKaydetXml.TabIndex = 104;
@@ -151,7 +151,7 @@
             // 
             // btnYukleXml
             // 
-            this.btnYukleXml.Location = new System.Drawing.Point(487, 118);
+            this.btnYukleXml.Location = new System.Drawing.Point(456, 84);
             this.btnYukleXml.Name = "btnYukleXml";
             this.btnYukleXml.Size = new System.Drawing.Size(200, 37);
             this.btnYukleXml.TabIndex = 105;

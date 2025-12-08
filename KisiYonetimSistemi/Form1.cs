@@ -31,6 +31,7 @@ namespace KisiYonetimSistemi
         private void btnEkle_Click(object sender, EventArgs e)
         {
             kisiEkle();
+            MessageBox.Show("Kişi yüklendi!", "Veri", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void kisiEkle()
@@ -56,6 +57,8 @@ namespace KisiYonetimSistemi
             kisiler.RemoveAll(x => x.Id == secilenKisiId);
             ListeyiGuncelle();
             Temizle();
+
+            MessageBox.Show("Kişi silindi!", "Veri", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)
@@ -73,6 +76,9 @@ namespace KisiYonetimSistemi
             }
 
             ListeyiGuncelle();
+
+            MessageBox.Show("Kişi güncellendi!", "Veri", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
         private void dgvKisiler_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -143,8 +149,6 @@ namespace KisiYonetimSistemi
         }
 
 
-
-
         public class Kisi
         {
             public int Id { get; set; }
@@ -152,7 +156,7 @@ namespace KisiYonetimSistemi
             public string Soyad { get; set; }
             public string Email { get; set; }
             public string Telefon { get; set; }
-        }
+        } 
 
         private void btnYukleXml_Click(object sender, EventArgs e)
         {
@@ -186,7 +190,7 @@ namespace KisiYonetimSistemi
                 {
                     MessageBox.Show("Hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-        }
-     }
-}
+         }
+       }
+    }
+  }
