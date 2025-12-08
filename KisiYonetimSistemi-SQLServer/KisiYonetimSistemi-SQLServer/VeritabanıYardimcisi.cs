@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient; // Burası değişti! Artık System.Data.SQLite değil
-using System.IO; // Veritabanı dosyasıyla doğrudan işlem yapmadığımız için aslında buna ihtiyaç kalmayacak ama dursun
+using System.Data.SqlClient;
+using System.IO;
 
 namespace KisiYonetimSistemi_SQLServer
 {
+
     public static class VeritabaniYardimcisi // Statik sınıf olarak kalması uygundur
     {
         // SQL Server bağlantı dizeniz! Lütfen kendi sunucu adınıza göre güncelleyin.
@@ -28,14 +29,14 @@ namespace KisiYonetimSistemi_SQLServer
                 try
                 {
                     conn.Open();
-                    Console.WriteLine("Veritabanı bağlantısı başarılı!"); // Konsol çıktısı (isteğe bağlı)
+                    Console.WriteLine("Veritabanı bağlantısı başarılı!");
 
-                    // Tablo oluşturma sorgusu, SQL Server'a göre düzenlendi
+                    // Tablo oluşturma sorgusu
                     string createTableQuery = @"
                         IF NOT EXISTS (SELECT * FROM SYSOBJECTS WHERE NAME='Kisiler' AND xtype='U')
                         BEGIN
                             CREATE TABLE Kisiler (
-                                Id INT PRIMARY KEY IDENTITY(1,1),
+                                Id INT PRIMARY KEY IDENTITY(1,1), 
                                 Ad NVARCHAR(100) NOT NULL,
                                 Soyad NVARCHAR(100) NOT NULL,
                                 Telefon NVARCHAR(20),
@@ -51,7 +52,6 @@ namespace KisiYonetimSistemi_SQLServer
                 catch (Exception ex)
                 {
                     Console.WriteLine("Veritabanı bağlantısı veya tablo oluşturma hatası: " + ex.Message);
-                    // Hata mesajını kullanıcıya göstermek için bir MessageBox.Show() de ekleyebilirsiniz
                     throw new Exception("Veritabanı bağlantısı kurulurken veya tablo oluşturulurken hata oluştu: " + ex.Message);
                 }
             }
@@ -60,11 +60,11 @@ namespace KisiYonetimSistemi_SQLServer
         // KisiEkle metodu
         public static void KisiEkle(Kisi kisi)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString)) // SqlConnection
+            using (SqlConnection conn = new SqlConnection(connectionString)) 
             {
                 conn.Open();
                 string insertQuery = "INSERT INTO Kisiler (Ad, Soyad, Telefon, Email ) VALUES (@Ad, @Soyad, @Telefon, @Email)";
-                using (SqlCommand cmd = new SqlCommand(insertQuery, conn)) // SqlCommand
+                using (SqlCommand cmd = new SqlCommand(insertQuery, conn)) 
                 {
                     // SqlParameter kullanıyoruz
                     cmd.Parameters.AddWithValue("@Ad", kisi.Ad);
@@ -76,34 +76,40 @@ namespace KisiYonetimSistemi_SQLServer
             }
         }
 
-
-
-        // KisileriGetir metodu
+        // Veritabanından tüm kişileri veya arama metnine göre filtrelenmiş kişileri listeleyen metot
         public static List<Kisi> KisileriListele(string aramaMetni = "")
         {
+            // Boş bir liste oluşturuyoruz; veritabanından gelecek veriler buraya eklenecek
             List<Kisi> kisiler = new List<Kisi>();
-            using (SqlConnection conn = new SqlConnection(connectionString)) // SqlConnection
+
+            // SqlConnection nesnesi oluşturuluyor ve using ile otomatik kapanması sağlanıyor
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                conn.Open();
+                conn.Open(); // Bağlantıyı aç
+
                 string selectQuery = "SELECT Id, Ad, Soyad, Telefon, Email FROM Kisiler";
 
+                // Arama metni girilmişse WHERE koşulu ekle
                 if (!string.IsNullOrEmpty(aramaMetni))
                 {
-                    // SQL Server'da LIKE operatörü için % kullanımı aynıdır
                     selectQuery += " WHERE Ad LIKE @Arama OR Soyad LIKE @Arama OR Telefon LIKE @Arama OR Email LIKE @Arama";
                 }
 
-                using (SqlCommand cmd = new SqlCommand(selectQuery, conn)) // SqlCommand
+                // SqlCommand nesnesi oluştur, sorguyu ve bağlantıyı ata
+                using (SqlCommand cmd = new SqlCommand(selectQuery, conn))
                 {
+                    // Eğer arama metni varsa parametreyi ekle
                     if (!string.IsNullOrEmpty(aramaMetni))
                     {
-                        cmd.Parameters.AddWithValue("@Arama", $"%{aramaMetni}%"); // SqlParameter
+                        cmd.Parameters.AddWithValue("@Arama", $"%{aramaMetni}%"); // %aramaMetni% → LIKE için
                     }
 
-                    using (SqlDataReader reader = cmd.ExecuteReader()) // SqlDataReader
+                    // SqlDataReader ile verileri oku
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
+                            // Her bir satırı Kisi nesnesine çevir ve listeye ekle
                             kisiler.Add(new Kisi
                             {
                                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
@@ -119,15 +125,17 @@ namespace KisiYonetimSistemi_SQLServer
             return kisiler;
         }
 
-        // KisiGuncelle metodu
         public static void KisiGuncelle(Kisi kisi)
+        // Parametre: kisi -> güncellenecek kişinin Ad, Soyad, Telefon, Email ve Id bilgileri
         {
             using (SqlConnection conn = new SqlConnection(connectionString)) // SqlConnection
             {
                 conn.Open();
+                // Güncelleme sorgusu (parametreli kullanım SQL Injection'a karşı güvenlidir)
                 string updateQuery = "UPDATE Kisiler SET Ad = @Ad, Soyad = @Soyad, Telefon = @Telefon, Email = @Email WHERE Id = @Id";
                 using (SqlCommand cmd = new SqlCommand(updateQuery, conn)) // SqlCommand
                 {
+                    // Parametreleri sorguya ekle
                     cmd.Parameters.AddWithValue("@Ad", kisi.Ad);
                     cmd.Parameters.AddWithValue("@Soyad", kisi.Soyad);
                     cmd.Parameters.AddWithValue("@Telefon", kisi.Telefon);
@@ -138,28 +146,24 @@ namespace KisiYonetimSistemi_SQLServer
             }
         }
 
-        // KisiSil metodu
+        // Veritabanından belirtilen ID'ye sahip kişiyi silen metot
         public static void KisiSil(int id)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString)) // SqlConnection
+            // SqlConnection nesnesi oluştur ve using ile otomatik kapat
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
+                // Bağlantıyı aç
                 conn.Open();
+
                 string deleteQuery = "DELETE FROM Kisiler WHERE Id = @Id";
-                using (SqlCommand cmd = new SqlCommand(deleteQuery, conn)) // SqlCommand
+
+                using (SqlCommand cmd = new SqlCommand(deleteQuery, conn))
                 {
                     cmd.Parameters.AddWithValue("@Id", id);
                     cmd.ExecuteNonQuery();
                 }
             }
         }
-        public class Kisi
-        {
-            public int Id { get; set; }
-            public string Ad { get; set; }
-            public string Soyad { get; set; }
-            public string Telefon { get; set; }
-            public string Email { get; set; }
 
-        }
     }
 }

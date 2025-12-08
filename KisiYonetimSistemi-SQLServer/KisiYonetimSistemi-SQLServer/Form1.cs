@@ -1,7 +1,7 @@
-﻿using System;                 
-using System.Windows.Forms;   
-using System.Data.SqlClient;   // SQL Server bağlantısı ve sorgular (SqlConnection, SqlCommand vb.)
-using System.Collections.Generic; // List<T> gibi koleksiyon sınıfları için (List, Dictionary vb.)
+﻿using System;
+using System.Windows.Forms;
+using System.Collections.Generic;
+using KisiYonetimSistemi_SQLServer;
 
 namespace KisiYonetimSistemi_SQLServer
 {
@@ -11,12 +11,10 @@ namespace KisiYonetimSistemi_SQLServer
         {
             InitializeComponent();
 
-            VeritabaniYardimcisi.InitializeDatabase();
-
+            VeritabaniYardimcisi.InitializeDatabase(); // tablo yoksa oluştur
             ListeyiYenile();
 
-            // DataGridView'deki bir hücreye tıklandığında TextBox'ların dolması için olay bağla
-            dgvKisiler.CellClick += dgvKisiler_CellClick;
+            dgvKisiler.CellClick += dgvKisiler_CellClick; // textbox doldurma
         }
 
         private void ListeyiYenile()
@@ -27,7 +25,7 @@ namespace KisiYonetimSistemi_SQLServer
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            var kisi = new VeritabaniYardimcisi.Kisi
+            var kisi = new Kisi
             {
                 Ad = txtAd.Text,
                 Soyad = txtSoyad.Text,
@@ -39,6 +37,7 @@ namespace KisiYonetimSistemi_SQLServer
             ListeyiYenile();
             MessageBox.Show("Kişi başarıyla eklendi!");
         }
+
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
             if (dgvKisiler.SelectedRows.Count == 0)
@@ -49,7 +48,7 @@ namespace KisiYonetimSistemi_SQLServer
 
             int id = Convert.ToInt32(dgvKisiler.SelectedRows[0].Cells["Id"].Value);
 
-            var kisi = new VeritabaniYardimcisi.Kisi
+            var kisi = new Kisi
             {
                 Id = id,
                 Ad = txtAd.Text,
@@ -72,6 +71,7 @@ namespace KisiYonetimSistemi_SQLServer
             }
 
             int id = Convert.ToInt32(dgvKisiler.SelectedRows[0].Cells["Id"].Value);
+
             VeritabaniYardimcisi.KisiSil(id);
             ListeyiYenile();
             MessageBox.Show("Kişi başarıyla silindi!");
@@ -88,10 +88,10 @@ namespace KisiYonetimSistemi_SQLServer
             {
                 var row = dgvKisiler.Rows[e.RowIndex];
 
-                txtAd.Text = row.Cells[1].Value?.ToString() ?? "";
-                txtSoyad.Text = row.Cells[2].Value?.ToString() ?? "";
-                txtTelefon.Text = row.Cells[3].Value?.ToString() ?? "";
-                txtEmail.Text = row.Cells[4].Value?.ToString() ?? "";
+                txtAd.Text = row.Cells["Ad"].Value?.ToString() ?? "";
+                txtSoyad.Text = row.Cells["Soyad"].Value?.ToString() ?? "";
+                txtTelefon.Text = row.Cells["Telefon"].Value?.ToString() ?? "";
+                txtEmail.Text = row.Cells["Email"].Value?.ToString() ?? "";
             }
         }
 
@@ -103,14 +103,24 @@ namespace KisiYonetimSistemi_SQLServer
 
         private void btnAra_Click(object sender, EventArgs e)
         {
-            string aramaMetni = txtArama.Text.Trim();
-            KisileriYukle(aramaMetni);
+            KisileriYukle(txtArama.Text.Trim());
         }
 
         private void txtArama_TextChanged(object sender, EventArgs e)
         {
-            string aramaMetni = txtArama.Text.Trim();
-            KisileriYukle(aramaMetni);
+            KisileriYukle(txtArama.Text.Trim());
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            dgvKisiler.AllowUserToAddRows = false;
+            dgvKisiler.Columns["Id"].ReadOnly = true;
+
+            dgvKisiler.DataError += (s, err) =>
+            {
+                err.ThrowException = false;
+            };
+            dgvKisiler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }

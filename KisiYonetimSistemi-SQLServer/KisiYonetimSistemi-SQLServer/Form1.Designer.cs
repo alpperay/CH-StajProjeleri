@@ -222,6 +222,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "KisiYonetimSistemi - SQL Server";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKisiler)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
