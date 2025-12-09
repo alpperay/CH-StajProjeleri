@@ -121,7 +121,7 @@
             this.dgvKisiler.Location = new System.Drawing.Point(260, 80);
             this.dgvKisiler.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvKisiler.Name = "dgvKisiler";
-            this.dgvKisiler.Size = new System.Drawing.Size(617, 249);
+            this.dgvKisiler.Size = new System.Drawing.Size(630, 249);
             this.dgvKisiler.TabIndex = 3;
             // 
             // btnEkle
@@ -202,7 +202,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(902, 474);
+            this.ClientSize = new System.Drawing.Size(902, 485);
             this.Controls.Add(this.btnAra);
             this.Controls.Add(this.txtArama);
             this.Controls.Add(this.label1);
