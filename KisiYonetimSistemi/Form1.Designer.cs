@@ -100,9 +100,9 @@
             // 
             // btnEkle
             // 
-            this.btnEkle.Location = new System.Drawing.Point(250, 41);
+            this.btnEkle.Location = new System.Drawing.Point(259, 47);
             this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(200, 37);
+            this.btnEkle.Size = new System.Drawing.Size(170, 35);
             this.btnEkle.TabIndex = 4;
             this.btnEkle.Text = "Ekle";
             this.btnEkle.UseVisualStyleBackColor = true;
@@ -110,9 +110,9 @@
             // 
             // btnSil
             // 
-            this.btnSil.Location = new System.Drawing.Point(250, 84);
+            this.btnSil.Location = new System.Drawing.Point(444, 47);
             this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(200, 37);
+            this.btnSil.Size = new System.Drawing.Size(170, 35);
             this.btnSil.TabIndex = 5;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = true;
@@ -120,9 +120,9 @@
             // 
             // btnGuncelle
             // 
-            this.btnGuncelle.Location = new System.Drawing.Point(250, 127);
+            this.btnGuncelle.Location = new System.Drawing.Point(620, 47);
             this.btnGuncelle.Name = "btnGuncelle";
-            this.btnGuncelle.Size = new System.Drawing.Size(200, 37);
+            this.btnGuncelle.Size = new System.Drawing.Size(170, 35);
             this.btnGuncelle.TabIndex = 6;
             this.btnGuncelle.Text = "Güncelle";
             this.btnGuncelle.UseVisualStyleBackColor = true;
@@ -135,15 +135,15 @@
             this.dgvKisiler.Name = "dgvKisiler";
             this.dgvKisiler.RowHeadersWidth = 51;
             this.dgvKisiler.RowTemplate.Height = 24;
-            this.dgvKisiler.Size = new System.Drawing.Size(717, 250);
+            this.dgvKisiler.Size = new System.Drawing.Size(769, 250);
             this.dgvKisiler.TabIndex = 7;
             this.dgvKisiler.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKisiler_CellClick);
             // 
             // btnKaydetXml
             // 
-            this.btnKaydetXml.Location = new System.Drawing.Point(456, 41);
+            this.btnKaydetXml.Location = new System.Drawing.Point(259, 170);
             this.btnKaydetXml.Name = "btnKaydetXml";
-            this.btnKaydetXml.Size = new System.Drawing.Size(200, 37);
+            this.btnKaydetXml.Size = new System.Drawing.Size(170, 35);
             this.btnKaydetXml.TabIndex = 104;
             this.btnKaydetXml.Text = "XML Kaydet";
             this.btnKaydetXml.UseVisualStyleBackColor = true;
@@ -151,9 +151,9 @@
             // 
             // btnYukleXml
             // 
-            this.btnYukleXml.Location = new System.Drawing.Point(456, 84);
+            this.btnYukleXml.Location = new System.Drawing.Point(620, 170);
             this.btnYukleXml.Name = "btnYukleXml";
-            this.btnYukleXml.Size = new System.Drawing.Size(200, 37);
+            this.btnYukleXml.Size = new System.Drawing.Size(170, 35);
             this.btnYukleXml.TabIndex = 105;
             this.btnYukleXml.Text = "XML Yükle";
             this.btnYukleXml.UseVisualStyleBackColor = true;

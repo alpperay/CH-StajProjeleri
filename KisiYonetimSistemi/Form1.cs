@@ -26,6 +26,8 @@ namespace KisiYonetimSistemi
             dgvKisiler.Columns.Add("Soyad", "Soyad");
             dgvKisiler.Columns.Add("Email", "Email");
             dgvKisiler.Columns.Add("Telefon", "Telefon");
+
+            dgvKisiler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
