@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace KisiYonetimSistemi
 {
@@ -26,14 +25,11 @@ namespace KisiYonetimSistemi
             dgvKisiler.Columns.Add("Soyad", "Soyad");
             dgvKisiler.Columns.Add("Email", "Email");
             dgvKisiler.Columns.Add("Telefon", "Telefon");
-
-            dgvKisiler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
             kisiEkle();
-            MessageBox.Show("Kişi yüklendi!", "Veri", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void kisiEkle()
@@ -59,8 +55,6 @@ namespace KisiYonetimSistemi
             kisiler.RemoveAll(x => x.Id == secilenKisiId);
             ListeyiGuncelle();
             Temizle();
-
-            MessageBox.Show("Kişi silindi!", "Veri", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)
@@ -78,9 +72,6 @@ namespace KisiYonetimSistemi
             }
 
             ListeyiGuncelle();
-
-            MessageBox.Show("Kişi güncellendi!", "Veri", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
 
         private void dgvKisiler_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -150,7 +141,6 @@ namespace KisiYonetimSistemi
             }
         }
 
-
         public class Kisi
         {
             public int Id { get; set; }
@@ -158,41 +148,7 @@ namespace KisiYonetimSistemi
             public string Soyad { get; set; }
             public string Email { get; set; }
             public string Telefon { get; set; }
-        } 
+        }
 
-        private void btnYukleXml_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "XML dosyası (*.xml)|*.xml";
-            openFileDialog.Title = "XML dosyasını seç";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    System.Xml.Serialization.XmlSerializer serializer =
-                        new System.Xml.Serialization.XmlSerializer(typeof(List<Kisi>));
-
-                    using (var stream = new System.IO.FileStream(openFileDialog.FileName, System.IO.FileMode.Open))
-                    {
-                        kisiler = (List<Kisi>)serializer.Deserialize(stream);
-                    }
-
-                    // En büyük ID'den devam etsin
-                    if (kisiler.Count > 0)
-                        sayac = kisiler.Max(x => x.Id) + 1;
-                    else
-                        sayac = 1;
-
-                    ListeyiGuncelle();
-
-                    MessageBox.Show("XML başarıyla yüklendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-         }
-       }
     }
-  }
+}
